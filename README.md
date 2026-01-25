@@ -1,26 +1,22 @@
-## 阿里云 OSS
+# OSS
 
-1. 必须在环境变量文件 `.env` 中添加以下内容:
+阿里云 OSS 文件上传插件
 
-   ```dotenv
-    # [ Plugin ] OSS
-    OSS_ACCESS_KEY='阿里云 access key'
-    OSS_SECRET_KEY='阿里云 secret key'
-   ```
+## 全局配置
 
-2. 在 core/conf.py 中添加以下内容:
+在 `backend/core/conf.py` 中添加以下内容：
 
-   ```python
-   ##################################################
-   # [ Plugin ] OSS
-   ##################################################
-   # .env
-   OSS_ACCESS_KEY: str
-   OSS_SECRET_KEY: str
-   
-   # 基础配置
-   OSS_BUCKET_NAME: str = 'fba-test'
-   OSS_ENDPOINT: str = 'https://oss-cn-hangzhou.aliyuncs.com'
-   OSS_USE_SIGNED_URL: bool = True
-   OSS_SIGNED_URL_EXPIRE_SECONDS: int = 300
-   ```
+```python
+##################################################
+# [ Plugin ] oss
+##################################################
+# .env
+OSS_ACCESS_KEY: str
+OSS_SECRET_KEY: str
+
+# 基础配置（in plugin.toml）
+OSS_BUCKET_NAME: str
+OSS_ENDPOINT: str
+OSS_USE_SIGNED_URL: bool
+OSS_SIGNED_URL_EXPIRE_SECONDS: int
+```
