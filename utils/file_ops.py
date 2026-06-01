@@ -1,6 +1,5 @@
 import oss2
 
-from asgiref.sync import sync_to_async
 from fastapi import UploadFile
 
 from backend.common.exception import errors
@@ -16,7 +15,6 @@ def get_oss_bucket() -> oss2.Bucket:
     return bucket
 
 
-@sync_to_async
 def oss_put_object(file: UploadFile) -> str:
     """
     oss 简单上传（bytes）

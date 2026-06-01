@@ -1,6 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, File, UploadFile
+from starlette.concurrency import run_in_threadpool
 
 from backend.common.dataclasses import UploadUrl
 from backend.common.response.response_schema import ResponseSchemaModel, response_base
@@ -14,5 +15,5 @@ router = APIRouter()
 @router.post('/upload', summary='OSS 文件上传', dependencies=[DependsJwtAuth])
 async def oss_upload_files(file: Annotated[UploadFile, File()]) -> ResponseSchemaModel[UploadUrl]:
     upload_file_verify(file)
-    url = await oss_put_object(file)
-    return response_base.success(data={'url': url})
+    url = await run_in_threadpool(oss_put_object, file)
+    return response_base.success(data=UploadUrl(url=url))
