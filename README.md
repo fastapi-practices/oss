@@ -8,23 +8,6 @@
 
 ## 配置说明
 
-在 `backend/core/conf.py` 中添加以下内容：
-
-```python
-##################################################
-# [ Plugin ] oss
-##################################################
-# .env
-OSS_ACCESS_KEY: str
-OSS_SECRET_KEY: str
-
-# 基础配置（in plugin.toml）
-OSS_BUCKET_NAME: str
-OSS_ENDPOINT: str
-OSS_USE_SIGNED_URL: bool
-OSS_SIGNED_URL_EXPIRE_SECONDS: int
-```
-
 在 `backend/.env` 中添加以下内容：
 
 ```env
@@ -42,6 +25,30 @@ OSS_ENDPOINT = 'https://oss-cn-hangzhou.aliyuncs.com'
 OSS_USE_SIGNED_URL = true
 OSS_SIGNED_URL_EXPIRE_SECONDS = 300
 ```
+
+在 `backend/core/conf.py` 中添加以下内容：
+
+```python
+##################################################
+# [ Plugin ] oss
+##################################################
+# .env
+OSS_ACCESS_KEY: str = ''
+OSS_SECRET_KEY: str = ''
+
+# 基础配置（in plugin.toml）
+OSS_BUCKET_NAME: str
+OSS_ENDPOINT: str
+OSS_USE_SIGNED_URL: bool
+OSS_SIGNED_URL_EXPIRE_SECONDS: int
+```
+
+## 配置项说明
+
+- `OSS_BUCKET_NAME`：存储文件使用的 Bucket 名称
+- `OSS_ENDPOINT`：阿里云 OSS 服务端地址
+- `OSS_USE_SIGNED_URL`：是否生成带有效期的签名访问地址
+- `OSS_SIGNED_URL_EXPIRE_SECONDS`：签名访问地址的有效期秒数
 
 ## 使用方式
 
